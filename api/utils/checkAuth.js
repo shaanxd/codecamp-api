@@ -40,7 +40,7 @@ module.exports.checkAdmin = (req, res, next) => {
 module.exports.checkTestUser = (req, res, next) => {
   try {
     const { userData } = req;
-    if (req.userData && req.userType === UserTypes.TEXT_CENTER_USER) {
+    if (req.userData && req.userData.userType === UserTypes.TEXT_CENTER_USER) {
       next();
     } else {
       res.status(401).json({
