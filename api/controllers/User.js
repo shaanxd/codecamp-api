@@ -31,7 +31,8 @@ module.exports.login_user = async (req, res) => {
           } = foundUser;
           const jwToken = jwt.sign(
             {
-              user: id
+              user: id,
+              userType
             },
             CONSTANTS.JWT_KEY,
             {

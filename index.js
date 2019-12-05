@@ -7,7 +7,8 @@ const cors = require('./api/utils/cors');
 const userRoutes = require('./api/routes/User');
 const adminRoutes = require('./api/routes/Admin');
 const User = require('./api/models/User');
-const { UserTypes } = require('./api/constants/User');
+/* const { UserTypes } = require('./api/constants/User'); */
+const { checkAuth, checkAdmin } = require('./api/utils/checkAuth');
 
 const port = process.env.PORT || 3000;
 
@@ -18,7 +19,7 @@ app.use(bodyParser.json());
 app.use(cors);
 
 app.use('/api/users', userRoutes);
-app.use('/api/admin', adminRoutes);
+app.use('/api/admin', checkAuth, checkAdmin, adminRoutes);
 
 app.use((req, res) => {
   res.status(404).json({
@@ -33,11 +34,11 @@ sequelize
   })
   .then(result => {
     return User.create({
-      username: 'shaanxd',
+      username: 'sidraxd',
       password: result,
-      fullname: 'Shahid Hassan',
-      email: 'shaahid.xd@gmail.com',
-      userType: UserTypes.ADMIN_USER
+      fullname: 'Sidra Mowlana',
+      email: 'sidra.xd@gmail.com',
+      userType: UserTypes.STUDENT_USER
     });
   }) */
   .then(() => {
